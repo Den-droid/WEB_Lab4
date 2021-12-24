@@ -35,17 +35,16 @@ function load_params() {
     let border_width = form.border_width;
     border_width.selectedIndex = data["border_width"] - 1;
 
-    let texture = document.forms.animation_settings.upload;
     let animation_params = document.getElementById("animation_params");
     let current_texture = document.createElement("label");
     let br = document.createElement("br");
 
     let hidden = document.forms.animation_settings.hidden;
-    hidden.setAttribute("value", `${data["filepath"].split("\\")[1]}`);
+    hidden.setAttribute("value", `${data["filepath"].split("/")[1]}`);
 
     current_texture.id = "current_texture";
     current_texture.textContent = `Current texture: ${
-      data["filepath"].split("\\")[1]
+      data["filepath"].split("/")[1]
     }`;
     animation_params.appendChild(current_texture);
     animation_params.insertBefore(br, current_texture);
@@ -155,7 +154,7 @@ function save() {
       let current_texture = document.createElement("label");
       current_texture.id = "current_texture";
       current_texture.textContent = `Current texture: ${
-        texture.value.split("\\")[2]
+        texture.value.split("/canvas_animation.css")[2]
       }`;
 
       let br = document.createElement("br");
@@ -166,7 +165,7 @@ function save() {
         current_texture.textContent = `Current texture: ${hidden.value}`;
       else {
         current_texture.textContent = `Current texture: ${
-          texture.value.split("\\")[2]
+          texture.value.split("/")[2]
         }`;
       }
     }
